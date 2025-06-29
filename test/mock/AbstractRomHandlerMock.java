@@ -124,7 +124,7 @@ public class AbstractRomHandlerMock extends AbstractRomHandler {
 
     @Override
     public int starterCount() {
-        return 0;
+        return 3;
     }
 
     @Override
