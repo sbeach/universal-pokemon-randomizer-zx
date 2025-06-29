@@ -104,4 +104,29 @@ class CustomStartersTest {
         assertEquals("Squirtle", newStarters.get(1).name, "Second starter should be Squirtle.");
         assertEquals("Bulbasaur", newStarters.get(2).name, "Third starter should be Bulbasaur.");
     }
+
+    @Test
+    void customStarters_withRandomOption() {
+        // --- Arrange ---
+        // The "Random" option is represented by index 0 in the customStarters array.
+        Settings settings = new Settings();
+        settings.setStartersMod(Settings.StartersMod.CUSTOM);
+        // Pokedex IDs: 5=Charmander, 1=Random, 2=Bulbasaur
+        settings.setCustomStarters(new int[]{5, 1, 2});
+
+        // --- Act ---
+        romHandlerMock.customStarters(settings);
+
+        // --- Assert ---
+        List<Pokemon> newStarters = romHandlerMock.getStarters();
+        assertEquals(3, newStarters.size(), "There should be 3 starters.");
+        assertEquals("Charmander", newStarters.get(0).name, "First starter should be Charmander.");
+
+        // The second starter should be a "random" one. Because we used a fixed seed (0)
+        // for our Random object, the "random" choice will always be the same.
+        // The first call to random.nextInt(9) with seed 0 returns 6. The pokemon at index 6 is Squirtle.
+        assertEquals("Squirtle", newStarters.get(1).name, "Second starter should be a predictable random choice (Squirtle).");
+
+        assertEquals("Bulbasaur", newStarters.get(2).name, "Third starter should be Bulbasaur.");
+    }
 }
