@@ -1317,7 +1317,8 @@ public class Settings {
         setStartersMod(getEnum(StartersMod.class, bools));
     }
 
-    private void setStartersMod(StartersMod startersMod) {
+    // visible for testing
+    public void setStartersMod(StartersMod startersMod) {
         this.startersMod = startersMod;
     }
 
