@@ -77,7 +77,6 @@ class CustomStartersTest {
         // Configure the mock with our dummy data.
         // This assumes the mock has methods to set its internal state.
         romHandlerMock.pokemonList = pokemonList;
-        romHandlerMock.mainPokemonList = pokemonList;
         romHandlerMock.mainPokemonListInclFormes = pokemonList;
     }
 
