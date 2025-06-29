@@ -80,4 +80,28 @@ class CustomStartersTest {
         romHandlerMock.mainPokemonList = pokemonList;
         romHandlerMock.mainPokemonListInclFormes = pokemonList;
     }
+
+    @Test
+    void customStarters_setsSpecificPokemon() {
+        // --- Arrange ---
+        // Create a settings object configured for custom starters.
+        // The numbers correspond to the Pokedex ID + 1, as used in the UI.
+        Settings settings = new Settings();
+        settings.setStartersMod(Settings.StartersMod.CUSTOM);
+        // Pokedex IDs: 5=Charmander, 8=Squirtle, 2=Bulbasaur
+        settings.setCustomStarters(new int[]{5, 8, 2});
+
+        // --- Act ---
+        // Call the method we want to test.
+        romHandlerMock.customStarters(settings);
+
+        // --- Assert ---
+        // The mock's `setStarters` method will have been called. We can
+        // verify the result using the mock's `getStarters` method.
+        List<Pokemon> newStarters = romHandlerMock.getStarters();
+        assertEquals(3, newStarters.size(), "There should be 3 starters.");
+        assertEquals("Charmander", newStarters.get(0).name, "First starter should be Charmander.");
+        assertEquals("Squirtle", newStarters.get(1).name, "Second starter should be Squirtle.");
+        assertEquals("Bulbasaur", newStarters.get(2).name, "Third starter should be Bulbasaur.");
+    }
 }
