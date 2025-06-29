@@ -13,6 +13,10 @@ import java.util.Random;
 
 // Used for testing functions of AbstractRomHandler with default implementations
 public class AbstractRomHandlerMock extends AbstractRomHandler {
+
+    public List<Pokemon> pokemonList = Collections.emptyList();
+    private List<Pokemon> starters = Collections.emptyList();
+
     public AbstractRomHandlerMock(Random random) {
         super(random, null);
     }
@@ -69,12 +73,12 @@ public class AbstractRomHandlerMock extends AbstractRomHandler {
 
     @Override
     public List<Pokemon> getPokemon() {
-        return Collections.emptyList();
+        return pokemonList;
     }
 
     @Override
     public List<Pokemon> getPokemonInclFormes() {
-        return Collections.emptyList();
+        return pokemonList;
     }
 
     @Override
@@ -104,12 +108,13 @@ public class AbstractRomHandlerMock extends AbstractRomHandler {
 
     @Override
     public List<Pokemon> getStarters() {
-        return Collections.emptyList();
+        return starters;
     }
 
     @Override
     public boolean setStarters(List<Pokemon> newStarters) {
-        return false;
+        starters = newStarters;
+        return true;
     }
 
     @Override
