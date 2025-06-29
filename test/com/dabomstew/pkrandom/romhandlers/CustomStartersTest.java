@@ -88,9 +88,7 @@ class CustomStartersTest {
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
         // Pokedex IDs: 4=Charmander, 7=Squirtle, 1=Bulbasaur
-        // UI logic increments each selection by 1; see usage of settings.setCustomStarters in NewRandomizerGUI.java
-        // selected values: 5=Charmander, 8=Squirtle, 2=Bulbasaur
-        settings.setCustomStarters(new int[]{5, 8, 2});
+        settings.setCustomStarters(new int[]{4, 7, 1});
 
         // --- Act ---
         // Call the method we want to test.
@@ -113,9 +111,7 @@ class CustomStartersTest {
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
         // Pokedex IDs: 4=Charmander, 0=Random, 1=Bulbasaur
-        // UI logic increments each selection by 1; see usage of settings.setCustomStarters in NewRandomizerGUI.java
-        // selected values: 5=Charmander, 1=Random, 2=Bulbasaur
-        settings.setCustomStarters(new int[]{5, 1, 2});
+        settings.setCustomStarters(new int[]{4, 0, 1});
 
         // --- Act ---
         romHandlerMock.customStarters(settings);
@@ -139,9 +135,7 @@ class CustomStartersTest {
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
         // Pokedex IDs: 4=Charmander, 0=Random, 0=Random
-        // UI logic increments each selection by 1; see usage of settings.setCustomStarters in NewRandomizerGUI.java
-        // selected values: 5=Charmander, 1=Random, 1=Random
-        settings.setCustomStarters(new int[]{5, 1, 1});
+        settings.setCustomStarters(new int[]{4, 0, 0});
 
         // --- Act ---
         romHandlerMock.customStarters(settings);

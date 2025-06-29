@@ -1748,8 +1748,8 @@ public class NewRandomizerGUI {
         settings.setBanBadRandomStarterHeldItems(spBanBadItemsCheckBox.isSelected() && spBanBadItemsCheckBox.isVisible());
         settings.setAllowStarterAltFormes(spAllowAltFormesCheckBox.isSelected() && spAllowAltFormesCheckBox.isVisible());
 
-        int[] customStarters = new int[] { spComboBox1.getSelectedIndex() + 1,
-                spComboBox2.getSelectedIndex() + 1, spComboBox3.getSelectedIndex() + 1 };
+        int[] customStarters = new int[] { spComboBox1.getSelectedIndex(),
+                spComboBox2.getSelectedIndex(), spComboBox3.getSelectedIndex() };
         settings.setCustomStarters(customStarters);
 
         settings.setEvolutionsMod(peUnchangedRadioButton.isSelected(), peRandomRadioButton.isSelected(), peRandomEveryLevelRadioButton.isSelected());
