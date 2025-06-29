@@ -107,7 +107,6 @@ public class Settings {
     private boolean allowStarterAltFormes;
 
     // index in the rom's list of pokemon
-    // offset from the dropdown index from RandomizerGUI by 1
     private int[] customStarters = new int[3];
     private boolean randomizeStartersHeldItems;
     private boolean limitMainGameLegendaries;
