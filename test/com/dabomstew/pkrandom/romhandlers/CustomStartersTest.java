@@ -3,6 +3,7 @@ package com.dabomstew.pkrandom.romhandlers;
 import com.dabomstew.pkrandom.Settings;
 import com.dabomstew.pkrandom.pokemon.Pokemon;
 import mock.MockRomHandler;
+import mock.PokemonHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,48 +31,18 @@ class CustomStartersTest {
 
         // Create a dummy list of Pokémon to simulate the data read from a ROM.
         List<Pokemon> pokemonList = new ArrayList<>();
-        Pokemon poke = new Pokemon();
         // The starter logic is based on a dropdown list that includes "Random" in index 0.
         // Therefore, we have to include "Random" in our mock list for the logic to do what it needs.
-        poke.number = 0;
-        poke.name = "Random";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 1;
-        poke.name = "Bulbasaur";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 2;
-        poke.name = "Ivysaur";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 3;
-        poke.name = "Venusaur";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 4;
-        poke.name = "Charmander";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 5;
-        poke.name = "Charmeleon";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 6;
-        poke.name = "Charizard";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 7;
-        poke.name = "Squirtle";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 8;
-        poke.name = "Wartortle";
-        pokemonList.add(poke);
-        poke = new Pokemon();
-        poke.number = 9;
-        poke.name = "Blastoise";
-        pokemonList.add(poke);
+        pokemonList.add(PokemonHelper.create(0, "Random"));
+        pokemonList.add(PokemonHelper.create(1, "Bulbasaur"));
+        pokemonList.add(PokemonHelper.create(2, "Ivysaur"));
+        pokemonList.add(PokemonHelper.create(3, "Venusaur"));
+        pokemonList.add(PokemonHelper.create(4, "Charmander"));
+        pokemonList.add(PokemonHelper.create(5, "Charmeleon"));
+        pokemonList.add(PokemonHelper.create(6, "Charizard"));
+        pokemonList.add(PokemonHelper.create(7, "Squirtle"));
+        pokemonList.add(PokemonHelper.create(8, "Wartortle"));
+        pokemonList.add(PokemonHelper.create(9, "Blastoise"));
 
         // Configure the mock with our dummy data.
         // This assumes the mock has methods to set its internal state.
