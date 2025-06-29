@@ -129,4 +129,28 @@ class CustomStartersTest {
 
         assertEquals("Bulbasaur", newStarters.get(2).name, "Third starter should be Bulbasaur.");
     }
+
+    @Test
+    void customStarters_withMultipleRandomOptions() {
+        // --- Arrange ---
+        Settings settings = new Settings();
+        settings.setStartersMod(Settings.StartersMod.CUSTOM);
+        // Pokedex IDs: 5=Charmander, Random, Random
+        settings.setCustomStarters(new int[]{5, 1, 1});
+
+        // --- Act ---
+        romHandlerMock.customStarters(settings);
+
+        // --- Assert ---
+        List<Pokemon> newStarters = romHandlerMock.getStarters();
+        assertEquals(3, newStarters.size(), "There should be 3 starters.");
+        assertEquals("Charmander", newStarters.get(0).name, "First starter should be Charmander.");
+
+        // With a seed of 0, the random sequence is predictable:
+        // 1. random.nextInt(9) -> 6 (Squirtle). Not banned, not picked. Use it.
+        // 2. random.nextInt(9) -> 6 (Squirtle). Already picked. Reroll.
+        // 3. random.nextInt(9) -> 7 (Wartortle). Not banned, not picked. Use it.
+        assertEquals("Squirtle", newStarters.get(1).name, "Second starter should be Squirtle.");
+        assertEquals("Wartortle", newStarters.get(2).name, "Third starter should be Wartortle.");
+    }
 }
