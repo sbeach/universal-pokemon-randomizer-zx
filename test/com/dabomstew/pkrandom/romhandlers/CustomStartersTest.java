@@ -32,7 +32,6 @@ class CustomStartersTest {
         List<Pokemon> pokemonList = new ArrayList<>();
         Pokemon poke = new Pokemon();
         // The starter logic is based on a dropdown list that includes "Random" in index 0.
-        // When the custom starters are parsed, the logic checks the number minus 1, since Random is the first option.
         // Therefore, we have to include "Random" in our mock list for the logic to do what it needs.
         poke.number = 0;
         poke.name = "Random";
