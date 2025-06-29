@@ -9,11 +9,12 @@ import java.io.PrintStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 // Used for testing functions of AbstractRomHandler with default implementations
 public class AbstractRomHandlerMock extends AbstractRomHandler {
-    public AbstractRomHandlerMock() {
-        super(null, null);
+    public AbstractRomHandlerMock(Random random) {
+        super(random, null);
     }
 
     @Override
