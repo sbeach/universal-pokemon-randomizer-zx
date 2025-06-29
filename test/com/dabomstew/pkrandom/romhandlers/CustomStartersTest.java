@@ -34,43 +34,43 @@ class CustomStartersTest {
         // The starter logic is based on a dropdown list that includes "Random" in index 0.
         // When the custom starters are parsed, the logic checks the number minus 1, since Random is the first option.
         // Therefore, we have to include "Random" in our mock list for the logic to do what it needs.
-        poke.number = 1;
+        poke.number = 0;
         poke.name = "Random";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 2;
+        poke.number = 1;
         poke.name = "Bulbasaur";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 3;
+        poke.number = 2;
         poke.name = "Ivysaur";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 4;
+        poke.number = 3;
         poke.name = "Venusaur";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 5;
+        poke.number = 4;
         poke.name = "Charmander";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 6;
+        poke.number = 5;
         poke.name = "Charmeleon";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 7;
+        poke.number = 6;
         poke.name = "Charizard";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 8;
+        poke.number = 7;
         poke.name = "Squirtle";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 9;
+        poke.number = 8;
         poke.name = "Wartortle";
         pokemonList.add(poke);
         poke = new Pokemon();
-        poke.number = 10;
+        poke.number = 9;
         poke.name = "Blastoise";
         pokemonList.add(poke);
 
