@@ -12,12 +12,12 @@ import java.util.Map;
 import java.util.Random;
 
 // Used for testing functions of AbstractRomHandler with default implementations
-public class AbstractRomHandlerMock extends AbstractRomHandler {
+public class MockRomHandler extends AbstractRomHandler {
 
     public List<Pokemon> pokemonList = Collections.emptyList();
     private List<Pokemon> starters = Collections.emptyList();
 
-    public AbstractRomHandlerMock(Random random) {
+    public MockRomHandler(Random random) {
         super(random, null);
     }
 

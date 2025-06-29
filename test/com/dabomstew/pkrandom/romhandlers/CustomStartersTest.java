@@ -2,7 +2,7 @@ package com.dabomstew.pkrandom.romhandlers;
 
 import com.dabomstew.pkrandom.Settings;
 import com.dabomstew.pkrandom.pokemon.Pokemon;
-import mock.AbstractRomHandlerMock;
+import mock.MockRomHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class CustomStartersTest {
 
-    private AbstractRomHandlerMock romHandlerMock;
+    private MockRomHandler romHandlerMock;
 
     @BeforeEach
     void setUp() {
@@ -26,7 +26,7 @@ class CustomStartersTest {
         // We use a mock to avoid needing a real ROM file.
         // The mock is pre-loaded with predictable data for our tests.
         // A fixed seed (0) is used for the Random object to make "random" choices predictable.
-        romHandlerMock = new AbstractRomHandlerMock(new Random(0L));
+        romHandlerMock = new MockRomHandler(new Random(0L));
 
         // Create a dummy list of Pokémon to simulate the data read from a ROM.
         List<Pokemon> pokemonList = new ArrayList<>();
