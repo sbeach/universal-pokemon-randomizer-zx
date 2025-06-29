@@ -88,7 +88,9 @@ class CustomStartersTest {
         // The numbers correspond to the Pokedex ID + 1, as used in the UI.
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
-        // Pokedex IDs: 5=Charmander, 8=Squirtle, 2=Bulbasaur
+        // Pokedex IDs: 4=Charmander, 7=Squirtle, 1=Bulbasaur
+        // UI logic increments each selection by 1; see usage of settings.setCustomStarters in NewRandomizerGUI.java
+        // selected values: 5=Charmander, 8=Squirtle, 2=Bulbasaur
         settings.setCustomStarters(new int[]{5, 8, 2});
 
         // --- Act ---
@@ -111,7 +113,9 @@ class CustomStartersTest {
         // The "Random" option is represented by index 0 in the customStarters array.
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
-        // Pokedex IDs: 5=Charmander, 1=Random, 2=Bulbasaur
+        // Pokedex IDs: 4=Charmander, 0=Random, 1=Bulbasaur
+        // UI logic increments each selection by 1; see usage of settings.setCustomStarters in NewRandomizerGUI.java
+        // selected values: 5=Charmander, 1=Random, 2=Bulbasaur
         settings.setCustomStarters(new int[]{5, 1, 2});
 
         // --- Act ---
@@ -135,7 +139,9 @@ class CustomStartersTest {
         // --- Arrange ---
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
-        // Pokedex IDs: 5=Charmander, Random, Random
+        // Pokedex IDs: 4=Charmander, 0=Random, 0=Random
+        // UI logic increments each selection by 1; see usage of settings.setCustomStarters in NewRandomizerGUI.java
+        // selected values: 5=Charmander, 1=Random, 1=Random
         settings.setCustomStarters(new int[]{5, 1, 1});
 
         // --- Act ---
