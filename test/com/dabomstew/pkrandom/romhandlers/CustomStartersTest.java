@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests the customStarters method in AbstractRomHandler using a mock implementation.
- * This avoids the need for a real ROM file.
  */
 class CustomStartersTest {
 
