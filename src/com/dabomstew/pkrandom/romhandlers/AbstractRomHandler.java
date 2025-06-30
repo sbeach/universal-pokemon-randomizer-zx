@@ -3971,29 +3971,30 @@ public abstract class AbstractRomHandler implements RomHandler {
 
         if (isYellow()) {
             setStarters(pickedStarters);
+            return;
+        }
+
+        if (customStarters[2] == 0){
+            Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
+            while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
+                pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
+            }
+            pickedStarters.add(pkmn);
         } else {
-            if (customStarters[2] == 0){
-                Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-                while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
-                    pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
+            Pokemon pkmn3 = romPokemon.get(customStarters[2]);
+            pickedStarters.add(pkmn3);
+        }
+        if (starterCount() > 3) {
+            for (int i = 3; i < starterCount(); i++) {
+                Pokemon pkmn = random2EvosPokemon(allowAltFormes);
+                while (pickedStarters.contains(pkmn)) {
+                    pkmn = random2EvosPokemon(allowAltFormes);
                 }
                 pickedStarters.add(pkmn);
-            } else {
-                Pokemon pkmn3 = romPokemon.get(customStarters[2]);
-                pickedStarters.add(pkmn3);
             }
-            if (starterCount() > 3) {
-                for (int i = 3; i < starterCount(); i++) {
-                    Pokemon pkmn = random2EvosPokemon(allowAltFormes);
-                    while (pickedStarters.contains(pkmn)) {
-                        pkmn = random2EvosPokemon(allowAltFormes);
-                    }
-                    pickedStarters.add(pkmn);
-                }
-                setStarters(pickedStarters);
-            } else {
-                setStarters(pickedStarters);
-            }
+            setStarters(pickedStarters);
+        } else {
+            setStarters(pickedStarters);
         }
     }
 
