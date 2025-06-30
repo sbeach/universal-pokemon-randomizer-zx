@@ -3948,6 +3948,7 @@ public abstract class AbstractRomHandler implements RomHandler {
                 banned.add(romPokemon.get(customStarter));
             }
         }
+
         if (customStarters[0] == 0){
             Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
             while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
@@ -3958,6 +3959,7 @@ public abstract class AbstractRomHandler implements RomHandler {
             Pokemon pkmn1 = romPokemon.get(customStarters[0]);
             pickedStarters.add(pkmn1);
         }
+
         if (customStarters[1] == 0){
             Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
             while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
@@ -3984,6 +3986,7 @@ public abstract class AbstractRomHandler implements RomHandler {
             Pokemon pkmn3 = romPokemon.get(customStarters[2]);
             pickedStarters.add(pkmn3);
         }
+
         if (starterCount() > 3) {
             for (int i = 3; i < starterCount(); i++) {
                 Pokemon pkmn = random2EvosPokemon(allowAltFormes);
