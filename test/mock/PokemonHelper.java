@@ -16,6 +16,39 @@ public class PokemonHelper {
         return poke;
     }
 
+    public static List<Pokemon> startersDefault() {
+        Pokemon bulbasaur = create(1, "Bulbasaur");
+        Pokemon ivysaur = create(2, "Ivysaur");
+        Pokemon venasaur = create(3, "Venasaur");
+        link(bulbasaur, ivysaur);
+        link(ivysaur, venasaur);
+
+        Pokemon charmander = create(4, "Charmander");
+        Pokemon charmeleon = create(5, "Charmeleon");
+        Pokemon charizard = create(6, "Charizard");
+        link(charmander, charmeleon);
+        link(charmeleon, charizard);
+
+        Pokemon squirtle = create(7, "Squirtle");
+        Pokemon wartortle = create(8, "Wartortle");
+        Pokemon blastoise = create(9, "Blastoise");
+        link(squirtle, wartortle);
+        link(wartortle, blastoise);
+
+        List<Pokemon> result = new ArrayList<>();
+        result.add(bulbasaur);
+        result.add(ivysaur);
+        result.add(venasaur);
+        result.add(charmander);
+        result.add(charmeleon);
+        result.add(charizard);
+        result.add(squirtle);
+        result.add(wartortle);
+        result.add(blastoise);
+
+        return result;
+    }
+
     /**
      * A helper to cleanly link two Pokémon in an evolution chain.
      * This abstracts away the need to manually create and add Evolution objects.
