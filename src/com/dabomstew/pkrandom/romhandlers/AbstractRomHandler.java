@@ -3950,10 +3950,10 @@ public abstract class AbstractRomHandler implements RomHandler {
         }
 
         if (customStarters[0] == 0){
-            Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
+            Pokemon pkmn;
+            do {
                 pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            }
+            } while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic);
             pickedStarters.add(pkmn);
         } else {
             Pokemon pkmn1 = romPokemon.get(customStarters[0]);
@@ -3961,10 +3961,10 @@ public abstract class AbstractRomHandler implements RomHandler {
         }
 
         if (customStarters[1] == 0){
-            Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
+            Pokemon pkmn;
+            do {
                 pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            }
+            } while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic);
             pickedStarters.add(pkmn);
         } else {
             Pokemon pkmn2 = romPokemon.get(customStarters[1]);
@@ -3977,10 +3977,10 @@ public abstract class AbstractRomHandler implements RomHandler {
         }
 
         if (customStarters[2] == 0){
-            Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
+            Pokemon pkmn;
+            do {
                 pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            }
+            } while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic);
             pickedStarters.add(pkmn);
         } else {
             Pokemon pkmn3 = romPokemon.get(customStarters[2]);
