@@ -142,4 +142,25 @@ class CustomStartersTest {
         assertTrue(remaining.contains(newStarters.get(4).name), "Fifth starter should be one of Bulbasaur, Charmander, or Squirtle");
         assertTrue(remaining.contains(newStarters.get(5).name), "Sixth starter should be one of Bulbasaur, Charmander, or Squirtle");
     }
+
+    @Test
+    void customStarters_forYellow() {
+        // --- Arrange ---
+        Settings settings = new Settings();
+        settings.setStartersMod(Settings.StartersMod.CUSTOM);
+        // Pokedex IDs: 5=Charmeleon, 2=Ivysaur, 8=Wartortle
+        settings.setCustomStarters(new int[]{5, 2, 8});
+        // Yellow version only has 2 starters
+        romHandlerMock.starterCount = 2;
+        romHandlerMock.isYellow = true;
+
+        // --- Act ---
+        romHandlerMock.customStarters(settings);
+
+        // --- Assert ---
+        List<Pokemon> newStarters = romHandlerMock.getStarters();
+        assertEquals(2, newStarters.size(), "There should be 2 starters.");
+        assertEquals("Charmeleon", newStarters.get(0).name, "First starter should be Charmeleon.");
+        assertEquals("Ivysaur", newStarters.get(1).name, "Second starter should be Ivysaur.");
+    }
 }
