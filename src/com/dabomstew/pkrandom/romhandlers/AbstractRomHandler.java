@@ -3995,10 +3995,9 @@ public abstract class AbstractRomHandler implements RomHandler {
                 }
                 pickedStarters.add(pkmn);
             }
-            setStarters(pickedStarters);
-        } else {
-            setStarters(pickedStarters);
         }
+
+        setStarters(pickedStarters);
     }
 
     @Override
