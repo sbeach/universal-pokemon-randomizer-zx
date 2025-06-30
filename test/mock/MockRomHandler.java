@@ -15,6 +15,7 @@ import java.util.Random;
 public class MockRomHandler extends AbstractRomHandler {
 
     public List<Pokemon> pokemonList = Collections.emptyList();
+    public int starterCount = 3;
     private List<Pokemon> starters = Collections.emptyList();
 
     public MockRomHandler(Random random) {
@@ -124,7 +125,7 @@ public class MockRomHandler extends AbstractRomHandler {
 
     @Override
     public int starterCount() {
-        return 3;
+        return starterCount;
     }
 
     @Override
