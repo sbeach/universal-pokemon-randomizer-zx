@@ -34,15 +34,7 @@ class CustomStartersTest {
         // The starter logic is based on a dropdown list that includes "Random" in index 0.
         // Therefore, we have to include "Random" in our mock list for the logic to do what it needs.
         pokemonList.add(PokemonHelper.create(0, "Random"));
-        pokemonList.add(PokemonHelper.create(1, "Bulbasaur"));
-        pokemonList.add(PokemonHelper.create(2, "Ivysaur"));
-        pokemonList.add(PokemonHelper.create(3, "Venusaur"));
-        pokemonList.add(PokemonHelper.create(4, "Charmander"));
-        pokemonList.add(PokemonHelper.create(5, "Charmeleon"));
-        pokemonList.add(PokemonHelper.create(6, "Charizard"));
-        pokemonList.add(PokemonHelper.create(7, "Squirtle"));
-        pokemonList.add(PokemonHelper.create(8, "Wartortle"));
-        pokemonList.add(PokemonHelper.create(9, "Blastoise"));
+        pokemonList.addAll(PokemonHelper.startersDefault());
 
         // Configure the mock with our dummy data.
         // This assumes the mock has methods to set its internal state.
