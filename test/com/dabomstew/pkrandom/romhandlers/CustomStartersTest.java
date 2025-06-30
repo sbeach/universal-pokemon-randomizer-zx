@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests the customStarters method in AbstractRomHandler using a mock implementation.
@@ -113,5 +114,37 @@ class CustomStartersTest {
         // 3. random.nextInt(9) -> 7 (Wartortle). Not banned, not picked. Use it.
         assertEquals("Squirtle", newStarters.get(1).name, "Second starter should be Squirtle.");
         assertEquals("Wartortle", newStarters.get(2).name, "Third starter should be Wartortle.");
+    }
+
+    @Test
+    void customStarters_withExtraStarters() {
+        // --- Arrange ---
+        Settings settings = new Settings();
+        settings.setStartersMod(Settings.StartersMod.CUSTOM);
+        // Pokedex IDs: 5=Charmeleon, 2=Ivysaur, 8=Wartortle
+        settings.setCustomStarters(new int[]{5, 2, 8});
+        // XY is considered to have 6 starters
+        romHandlerMock.starterCount = 6;
+
+        // --- Act ---
+        romHandlerMock.customStarters(settings);
+
+        // --- Assert ---
+        List<Pokemon> newStarters = romHandlerMock.getStarters();
+        assertEquals(6, newStarters.size(), "There should be 6 starters.");
+        assertEquals("Charmeleon", newStarters.get(0).name, "First starter should be Charmeleon.");
+        assertEquals("Ivysaur", newStarters.get(1).name, "Second starter should be Ivysaur.");
+        assertEquals("Wartortle", newStarters.get(2).name, "Second starter should be Wartortle.");
+
+        // from here, remaining starters are random among those that have two evolutions
+        // given that we only have three qualifying Pokemon in the list,
+        // we merely need to show that they are all present
+        List<String> remaining = new ArrayList<>();
+        remaining.add("Bulbasaur");
+        remaining.add("Charmander");
+        remaining.add("Squirtle");
+        assertTrue(remaining.contains(newStarters.get(3).name), "Fourth starter should be one of Bulbasaur, Charmander, or Squirtle");
+        assertTrue(remaining.contains(newStarters.get(4).name), "Fifth starter should be one of Bulbasaur, Charmander, or Squirtle");
+        assertTrue(remaining.contains(newStarters.get(5).name), "Sixth starter should be one of Bulbasaur, Charmander, or Squirtle");
     }
 }
