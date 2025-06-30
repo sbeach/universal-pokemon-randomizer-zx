@@ -17,6 +17,12 @@ public class PokemonHelper {
     }
 
     public static List<Pokemon> startersDefault() {
+        List<Pokemon> result = new ArrayList<>();
+        // The starter logic is based on a dropdown list that includes "Random" in index 0.
+        // Therefore, we have to include "Random" in our mock list for the logic to do what it needs.
+        Pokemon random = create(0, "Random");
+        result.add(random);
+
         Pokemon bulbasaur = create(1, "Bulbasaur");
         Pokemon ivysaur = create(2, "Ivysaur");
         Pokemon venasaur = create(3, "Venasaur");
@@ -35,7 +41,6 @@ public class PokemonHelper {
         link(squirtle, wartortle);
         link(wartortle, blastoise);
 
-        List<Pokemon> result = new ArrayList<>();
         result.add(bulbasaur);
         result.add(ivysaur);
         result.add(venasaur);

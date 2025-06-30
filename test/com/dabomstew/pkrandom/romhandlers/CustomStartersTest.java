@@ -31,11 +31,7 @@ class CustomStartersTest {
         romHandlerMock = new MockRomHandler(new Random(0L));
 
         // Create a dummy list of Pokémon to simulate the data read from a ROM.
-        List<Pokemon> pokemonList = new ArrayList<>();
-        // The starter logic is based on a dropdown list that includes "Random" in index 0.
-        // Therefore, we have to include "Random" in our mock list for the logic to do what it needs.
-        pokemonList.add(PokemonHelper.create(0, "Random"));
-        pokemonList.addAll(PokemonHelper.startersDefault());
+        List<Pokemon> pokemonList = PokemonHelper.startersDefault();
 
         // Configure the mock with our dummy data.
         // This assumes the mock has methods to set its internal state.
