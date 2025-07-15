@@ -164,4 +164,23 @@ class CustomStartersTest {
         assertEquals("Charmeleon", newStarters.get(0).name, "First starter should be Charmeleon.");
         assertEquals("Ivysaur", newStarters.get(1).name, "Second starter should be Ivysaur.");
     }
+
+    @Test
+    void customStarters_shortCircuitsIfTooManyStartersAreProvided() {
+        // --- Arrange ---
+        Settings settings = new Settings();
+        settings.setStartersMod(Settings.StartersMod.CUSTOM);
+        // Pokedex IDs: 5=Charmeleon, 2=Ivysaur, 8=Wartortle, 1=Bulbasaur
+        settings.setCustomStarters(new int[]{5, 2, 8, 1});
+
+        // --- Act ---
+        romHandlerMock.customStarters(settings);
+
+        // --- Assert ---
+        List<Pokemon> newStarters = romHandlerMock.getStarters();
+        assertEquals(3, newStarters.size(), "There should be 3 starters.");
+        assertEquals("Charmeleon", newStarters.get(0).name, "First starter should be Charmeleon.");
+        assertEquals("Ivysaur", newStarters.get(1).name, "Second starter should be Ivysaur.");
+        assertEquals("Wartortle", newStarters.get(2).name, "Third starter should be Wartortle.");
+    }
 }
