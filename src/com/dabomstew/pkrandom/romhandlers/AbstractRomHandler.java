@@ -3942,59 +3942,36 @@ public abstract class AbstractRomHandler implements RomHandler {
         if (banIrregularAltFormes) {
             banned.addAll(getIrregularFormes());
         }
-        // loop to add chosen pokemon to banned, preventing it from being a random option.
-        for (int i = 0; i < customStarters.length; i = i + 1){
-            if (!(customStarters[i] - 1 == 0)){
-                banned.add(romPokemon.get(customStarters[i] - 1));
+
+        // condition is a logical guard in case customStarters.length is somehow greater than starterCount()
+        for (int i = 0; i < customStarters.length && pickedStarters.size() < starterCount(); i++) {
+            int customStarter = customStarters[i];
+            Pokemon chosenPokemon;
+            if (customStarter == 0) {
+                // if ID is `0`, user has left this selection to be random
+                do {
+                    chosenPokemon = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
+                } while (pickedStarters.contains(chosenPokemon) || banned.contains(chosenPokemon) || chosenPokemon.actuallyCosmetic);
+            } else {
+                chosenPokemon = romPokemon.get(customStarter);
             }
-        }
-        if (customStarters[0] - 1 == 0){
-            Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
-                pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            }
-            pickedStarters.add(pkmn);
-        } else {
-            Pokemon pkmn1 = romPokemon.get(customStarters[0] - 1);
-            pickedStarters.add(pkmn1);
-        }
-        if (customStarters[1] - 1 == 0){
-            Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
-                pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-            }
-            pickedStarters.add(pkmn);
-        } else {
-            Pokemon pkmn2 = romPokemon.get(customStarters[1] - 1);
-            pickedStarters.add(pkmn2);
+            pickedStarters.add(chosenPokemon);
+            // add chosen Pokemon to banned list to prevent it from being a random option in the future
+            banned.add(chosenPokemon);
         }
 
-        if (isYellow()) {
-            setStarters(pickedStarters);
-        } else {
-            if (customStarters[2] - 1 == 0){
-                Pokemon pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-                while (pickedStarters.contains(pkmn) || banned.contains(pkmn) || pkmn.actuallyCosmetic) {
-                    pkmn = allowAltFormes ? randomPokemonInclFormes() : randomPokemon();
-                }
-                pickedStarters.add(pkmn);
-            } else {
-                Pokemon pkmn3 = romPokemon.get(customStarters[2] - 1);
-                pickedStarters.add(pkmn3);
-            }
-            if (starterCount() > 3) {
-                for (int i = 3; i < starterCount(); i++) {
-                    Pokemon pkmn = random2EvosPokemon(allowAltFormes);
-                    while (pickedStarters.contains(pkmn)) {
-                        pkmn = random2EvosPokemon(allowAltFormes);
-                    }
-                    pickedStarters.add(pkmn);
-                }
-                setStarters(pickedStarters);
-            } else {
-                setStarters(pickedStarters);
-            }
+        // we've run out of user-chosen starters
+        // if we need more, fill with random basic Pokemon with 2 evolutions
+        // note: "basic with 2 evo" logic is preserved from historical implementation
+        while (pickedStarters.size() < starterCount()) {
+            Pokemon pkmn;
+            do {
+                pkmn = random2EvosPokemon(allowAltFormes);
+            } while (pickedStarters.contains(pkmn));
+            pickedStarters.add(pkmn);
         }
+
+        setStarters(pickedStarters);
     }
 
     @Override
