@@ -388,9 +388,9 @@ public class Settings {
                 randomizeStartersHeldItems, banBadRandomStarterHeldItems, allowStarterAltFormes));
 
         // 5 - 10: dropdowns
-        write2ByteInt(out, customStarters[0] - 1);
-        write2ByteInt(out, customStarters[1] - 1);
-        write2ByteInt(out, customStarters[2] - 1);
+        write2ByteInt(out, customStarters[0]);
+        write2ByteInt(out, customStarters[1]);
+        write2ByteInt(out, customStarters[2]);
 
         // 11 movesets
         out.write(makeByteSelected(movesetsMod == MovesetsMod.COMPLETELY_RANDOM,
