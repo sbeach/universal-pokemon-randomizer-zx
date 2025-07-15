@@ -194,12 +194,14 @@ public class Randomizer {
                 pokemonTraitsChanged = true;
                 break;
             case RANDOM:
+            case CUSTOM:
                 romHandler.randomizePokemonStats(settings);
                 pokemonTraitsChanged = true;
                 break;
             default:
                 break;
         }
+        // sbeach: customize selected Pokemon after stat randomization
 
         // Abilities
         if (settings.getAbilitiesMod() == Settings.AbilitiesMod.RANDOMIZE) {

@@ -3943,6 +3943,8 @@ public abstract class AbstractRomHandler implements RomHandler {
             banned.addAll(getIrregularFormes());
         }
 
+        // sbeach bug #2: did not stop execution if pickedStarters.size() reached starterCount() limit
+        //  for (customStarter : customerStarters) {
         // condition is a logical guard in case customStarters.length is somehow greater than starterCount()
         for (int i = 0; i < customStarters.length && pickedStarters.size() < starterCount(); i++) {
             int customStarter = customStarters[i];
@@ -3967,6 +3969,8 @@ public abstract class AbstractRomHandler implements RomHandler {
             Pokemon pkmn;
             do {
                 pkmn = random2EvosPokemon(allowAltFormes);
+            // sbeach bug #1: wrong condition caused infinite loop
+            //  } while (!pickedStarters.contains(pkmn));
             } while (pickedStarters.contains(pkmn));
             pickedStarters.add(pkmn);
         }

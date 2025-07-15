@@ -68,7 +68,7 @@ public class Settings {
     private boolean dualTypeOnly;
 
     public enum BaseStatisticsMod {
-        UNCHANGED, SHUFFLE, RANDOM,
+        UNCHANGED, SHUFFLE, RANDOM, CUSTOM,
     }
 
     public enum ExpCurveMod {
@@ -655,6 +655,7 @@ public class Settings {
         settings.setRandomizeStartersHeldItems(restoreState(data[4], 4));
         settings.setBanBadRandomStarterHeldItems(restoreState(data[4], 5));
         settings.setAllowStarterAltFormes(restoreState(data[4],6));
+        // sbeach: setCustomStarterBaseStats
 
         settings.setCustomStarters(new int[] { FileFunctions.read2ByteInt(data, 5),
                 FileFunctions.read2ByteInt(data, 7), FileFunctions.read2ByteInt(data, 9) });

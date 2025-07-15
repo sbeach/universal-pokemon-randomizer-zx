@@ -65,6 +65,11 @@ public class NewRandomizerGUI {
     private JRadioButton pbsUnchangedRadioButton;
     private JRadioButton pbsShuffleRadioButton;
     private JRadioButton pbsRandomRadioButton;
+    private JRadioButton pbsCustomRadioButton;
+    // sbeach: model after spComboBox1, 2, 3
+    private JComboBox<String> pbsCustomComboBox1;
+    private JComboBox<String> pbsCustomComboBox2;
+    private JComboBox<String> pbsCustomComboBox3;
     private JRadioButton pbsLegendariesSlowRadioButton;
     private JRadioButton pbsStrongLegendariesSlowRadioButton;
     private JRadioButton pbsAllMediumFastRadioButton;
@@ -414,6 +419,7 @@ public class NewRandomizerGUI {
         pbsUnchangedRadioButton.addActionListener(e -> enableOrDisableSubControls());
         pbsShuffleRadioButton.addActionListener(e -> enableOrDisableSubControls());
         pbsRandomRadioButton.addActionListener(e -> enableOrDisableSubControls());
+        pbsCustomRadioButton.addActionListener(e -> enableOrDisableSubControls());
         pbsFollowMegaEvosCheckBox.addActionListener(e -> enableOrDisableSubControls());
         pbsFollowEvolutionsCheckBox.addActionListener(e -> enableOrDisableSubControls());
         pbsStandardizeEXPCurvesCheckBox.addActionListener(e -> enableOrDisableSubControls());
@@ -1457,6 +1463,7 @@ public class NewRandomizerGUI {
         tpRandomizeTrainerClassNamesCheckBox.setSelected(settings.isRandomizeTrainerClassNames());
         ptIsDualTypeCheckBox.setSelected(settings.isDualTypeOnly());
 
+        pbsCustomRadioButton.setSelected(settings.getBaseStatisticsMod() == Settings.BaseStatisticsMod.CUSTOM);
         pbsRandomRadioButton.setSelected(settings.getBaseStatisticsMod() == Settings.BaseStatisticsMod.RANDOM);
         pbsShuffleRadioButton.setSelected(settings.getBaseStatisticsMod() == Settings.BaseStatisticsMod.SHUFFLE);
         pbsUnchangedRadioButton.setSelected(settings.getBaseStatisticsMod() == Settings.BaseStatisticsMod.UNCHANGED);
@@ -1711,7 +1718,7 @@ public class NewRandomizerGUI {
         settings.setRandomizeTrainerClassNames(tpRandomizeTrainerClassNamesCheckBox.isSelected());
 
         settings.setBaseStatisticsMod(pbsUnchangedRadioButton.isSelected(), pbsShuffleRadioButton.isSelected(),
-                pbsRandomRadioButton.isSelected());
+                pbsRandomRadioButton.isSelected(), pbsCustomRadioButton.isSelected());
         settings.setBaseStatsFollowEvolutions(pbsFollowEvolutionsCheckBox.isSelected());
         settings.setUpdateBaseStats(pbsUpdateBaseStatsCheckBox.isSelected() && pbsUpdateBaseStatsCheckBox.isVisible());
         settings.setUpdateBaseStatsToGeneration(pbsUpdateComboBox.getSelectedIndex() + (Math.max(6,romHandler.generationOfPokemon()+1)));
@@ -2035,6 +2042,9 @@ public class NewRandomizerGUI {
         pbsRandomRadioButton.setVisible(true);
         pbsRandomRadioButton.setEnabled(false);
         pbsRandomRadioButton.setSelected(false);
+        pbsCustomRadioButton.setVisible(true);
+        pbsCustomRadioButton.setEnabled(false);
+        pbsCustomRadioButton.setSelected(false);
         pbsLegendariesSlowRadioButton.setVisible(true);
         pbsLegendariesSlowRadioButton.setEnabled(false);
         pbsLegendariesSlowRadioButton.setSelected(false);
@@ -2696,6 +2706,7 @@ public class NewRandomizerGUI {
             pbsUnchangedRadioButton.setSelected(true);
             pbsShuffleRadioButton.setEnabled(true);
             pbsRandomRadioButton.setEnabled(true);
+            pbsCustomRadioButton.setEnabled(true);
 
             pbsStandardizeEXPCurvesCheckBox.setEnabled(true);
             pbsLegendariesSlowRadioButton.setSelected(true);
