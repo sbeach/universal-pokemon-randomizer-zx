@@ -148,8 +148,9 @@ class CustomStartersTest {
         // --- Arrange ---
         Settings settings = new Settings();
         settings.setStartersMod(Settings.StartersMod.CUSTOM);
-        // Pokedex IDs: 5=Charmeleon, 2=Ivysaur, 8=Wartortle
-        settings.setCustomStarters(new int[]{5, 2, 8});
+        // UI for Yellow only allows 2 choices
+        // Pokedex IDs: 5=Charmeleon, 2=Ivysaur
+        settings.setCustomStarters(new int[]{5, 2});
         // Yellow version only has 2 starters
         romHandlerMock.starterCount = 2;
         romHandlerMock.isYellow = true;
