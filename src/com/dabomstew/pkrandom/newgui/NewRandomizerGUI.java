@@ -2045,6 +2045,18 @@ public class NewRandomizerGUI {
         pbsCustomRadioButton.setVisible(true);
         pbsCustomRadioButton.setEnabled(false);
         pbsCustomRadioButton.setSelected(false);
+        pbsCustomComboBox1.setVisible(true);
+        pbsCustomComboBox1.setEnabled(false);
+        pbsCustomComboBox1.setSelectedIndex(0);
+        pbsCustomComboBox1.setModel(new DefaultComboBoxModel<>(new String[] { "--" }));
+        pbsCustomComboBox2.setVisible(true);
+        pbsCustomComboBox2.setEnabled(false);
+        pbsCustomComboBox2.setSelectedIndex(0);
+        pbsCustomComboBox2.setModel(new DefaultComboBoxModel<>(new String[] { "--" }));
+        pbsCustomComboBox3.setVisible(true);
+        pbsCustomComboBox3.setEnabled(false);
+        pbsCustomComboBox3.setSelectedIndex(0);
+        pbsCustomComboBox3.setModel(new DefaultComboBoxModel<>(new String[] { "--" }));
         pbsLegendariesSlowRadioButton.setVisible(true);
         pbsLegendariesSlowRadioButton.setEnabled(false);
         pbsLegendariesSlowRadioButton.setSelected(false);
@@ -3132,7 +3144,7 @@ public class NewRandomizerGUI {
             pbsFollowMegaEvosCheckBox.setEnabled(followMegaEvolutionControlsEnabled);
         }
 
-        if (pbsRandomRadioButton.isSelected()) {
+        if (pbsRandomRadioButton.isSelected() || pbsCustomRadioButton.isSelected()) {
             if (pbsFollowEvolutionsCheckBox.isSelected() || pbsFollowMegaEvosCheckBox.isSelected()) {
                 pbsAssignEvoStatsRandomlyCheckBox.setEnabled(true);
             } else {
@@ -3143,6 +3155,11 @@ public class NewRandomizerGUI {
             pbsAssignEvoStatsRandomlyCheckBox.setEnabled(false);
             pbsAssignEvoStatsRandomlyCheckBox.setSelected(false);
         }
+
+        boolean pbsCustomStatus = pbsCustomRadioButton.isSelected();
+        pbsCustomComboBox1.setEnabled(pbsCustomStatus);
+        pbsCustomComboBox2.setEnabled(pbsCustomStatus);
+        pbsCustomComboBox3.setEnabled(pbsCustomStatus);
 
         if (pbsStandardizeEXPCurvesCheckBox.isSelected()) {
             pbsLegendariesSlowRadioButton.setEnabled(true);
