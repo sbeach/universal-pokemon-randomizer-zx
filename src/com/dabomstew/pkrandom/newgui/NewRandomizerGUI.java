@@ -3785,6 +3785,15 @@ public class NewRandomizerGUI {
             spComboBox3.setSelectedIndex(allPokes.indexOf(currentStarters.get(2)));
         }
 
+        pbsCustomComboBox1.setModel(new DefaultComboBoxModel<>(pokeNames));
+        pbsCustomComboBox1.setSelectedIndex(allPokes.indexOf(currentStarters.get(0)));
+        pbsCustomComboBox2.setModel(new DefaultComboBoxModel<>(pokeNames));
+        pbsCustomComboBox2.setSelectedIndex(allPokes.indexOf(currentStarters.get(1)));
+        if (!romHandler.isYellow()) {
+            pbsCustomComboBox3.setModel(new DefaultComboBoxModel<>(pokeNames));
+            pbsCustomComboBox3.setSelectedIndex(allPokes.indexOf(currentStarters.get(2)));
+        }
+
         String[] baseStatGenerationNumbers = new String[Math.min(4, GlobalConstants.HIGHEST_POKEMON_GEN - romHandler.generationOfPokemon())];
         int j = Math.max(6, romHandler.generationOfPokemon() + 1);
         for (int i = 0; i < baseStatGenerationNumbers.length; i++) {
